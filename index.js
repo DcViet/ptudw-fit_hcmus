@@ -4,7 +4,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8000;
 const expressHandlebars = require('express-handlebars');
-const { route } = require('./routes/indexRouter');
+const { routes } = require('./routes/indexRouter');
+const {createStarList} = require('./controllers/handlebarsHelper');
 
 //cau hinh public static folder
 app.use(express.static(__dirname + '/public'));
@@ -17,6 +18,9 @@ app.engine('hbs', expressHandlebars.engine({
     defaultLayout: 'layout',
     runtimeOptions: {
         allowProtoPropertiesByDefault: true
+    },
+    helpers: {
+        createStarList
     }
 }));
 app.set('view engine', 'hbs');

@@ -4,8 +4,25 @@ const controller = {};
 const models = require('../models');
 
 controller.showHomepage = async (req, res) => {
+    const recentProducts = await models.Product.findAll({
+        attributes: ['id', 'name', 'imagePath', 'stars', 'price', 'oldPrice', 'createdAt'],
+        order: [['createdAt', 'DESC']],
+        limit: 10
+    });
+    res.locals.recentProducts = recentProducts;
+
+    const featuredProducts = await models.Product.findAll({
+        attributes: ['id', 'name', 'imagePath', 'stars', 'price', 'oldPrice'],
+        order: [['stars', 'DESC']],
+        limit: 10
+    });
+
+    res.locals.featuredProducts = featuredProducts;
+
     const Brand = models.Brand;
     const brands = await Brand.findAll();
+    console.log(brands);
+    res.render('index', { brands });
 
     // const Category = models.Category; 
     const categories = await models.Category.findAll();
@@ -18,16 +35,9 @@ controller.showHomepage = async (req, res) => {
         thirdArray
     ];
 
-    const featuredProducts = await models.Product.findAll({
-        attributes: ['id', 'name', 'imagePath', 'stars','price', 'oldPrice'],
-            order: [['stars', 'DESC']],
-            limit: 10
-    });
 
-    res.locals.featuredProducts = featuredProducts;
 
-    console.log(brands);
-    res.render('index', { brands });
+    
 }
 controller.showPage = (req, res, next) => {
     const pages = ['cart', 'checkout', 'contact', 'login', 'my-account', 'product-detail', 'product-list', 'wishlist'];
