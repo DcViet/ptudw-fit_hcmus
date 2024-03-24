@@ -1,0 +1,3 @@
+1.
+10. sequelize db:seed:all
+11. web express theo mô hình MVC 
