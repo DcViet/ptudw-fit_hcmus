@@ -45,7 +45,7 @@ app.use(session({
     }
 }));
 
-//middleware khoi dong gio hang
+//middleware khoi tao gio hang
 app.use((req, res, next) => {
     let Cart = require('./controllers/cart');
     req.session.cart = new Cart(req.session.cart ? req.session.cart : {});
