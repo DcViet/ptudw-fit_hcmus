@@ -22,7 +22,7 @@
                         <div class="col-md-12">
                             <div class="payment-method">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="address-{{id}}" name="addressId" value="PAYPAL">
+                                <input type="radio" class="custom-control-input" id="address-{{id}}" name="addressId" value="{{id}}" {{#if isDefault}} checked{{/if}}>
                                 <label class="custom-control-label" for="address-{{id}}"><strong>{{firstName}} {{lastName}}</strong></label>
                             </div>
                             <div class="payment-content" id="address-{{id}}-show">
@@ -37,8 +37,8 @@
                         </div>
                         {{/each}}
                         <div class="col-md-12">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="shipto" />
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="shipto" name="addressId"/>
                                 <label class="custom-control-label" for="shipto">Ship to
                                     different address</label>
                             </div>

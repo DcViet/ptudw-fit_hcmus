@@ -39,7 +39,7 @@
                                         <td>
                                             <div class="qty">
                                                 <button class="btn-minus" onclick="updateCart({{product.id}},parseInt(document.getElementById('quantity{{product.id}}').value) - 1)"><i class="fa fa-minus"></i></button>
-                                                <input type="number" value="{{quantity}}" id="quantity{{product.id}}" readonly>
+                                                <input type="number" value="{{quantity}}" readonly id="quantity{{product.id}}">
                                                 <button class="btn-plus" onclick="updateCart({{product.id}},parseInt(document.getElementById('quantity{{product.id}}').value) + 1)"><i class="fa fa-plus"></i></button>
                                             </div>
                                         </td>

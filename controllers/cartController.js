@@ -7,7 +7,6 @@ controller.add = async (req, res) => {
     let id = isNaN(req.body.id) ? 0 : parseInt(req.body.id);
     let quantity = isNaN(req.body.quantity) ? 0 : parseInt(req.body.quantity);
 
-
     let product = await models.Product.findByPk(id);
     if (product && quantity > 0) {
         req.session.cart.add(product, quantity);
