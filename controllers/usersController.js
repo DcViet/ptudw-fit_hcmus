@@ -11,7 +11,7 @@ controller.checkout = async (req, res) => {
         res.locals.cart = req.session.cart.getCart();
         res.render('checkout');
     }
-    res.redirect('/products');
+    // res.redirect('/products');
 }
 
 controller.placeorders = async (req, res) => {
@@ -19,7 +19,7 @@ controller.placeorders = async (req, res) => {
     let addressId = isNaN(req.body.addressId) ? 0 : parseInt(req.body.addressId);
     let address = await models.Address.findByPk(addressId);
     if (!address) {
-        address = await models.Address.creat({
+        address = await models.Address.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
@@ -36,8 +36,9 @@ controller.placeorders = async (req, res) => {
 
 
     let cart = req.session.cart;
-    
-    cart.shippingAddress = `${address.firstName} ${address.lastName}, Email: ${address.email}, Mobile: ${address.mobile}, Address: ${address.address} ${address.city} ${address.state} ${address.zipCode}`;
+
+    cart.shippingAddress = `${address.firstName} ${address.lastName}, Email: ${address.email}, Mobile: ${address.mobile}, Address: ${address.address}, ${address.city}, ${address.country}, ${address.state}, ${address.zipCode}`;
+
     cart.paymentMethod = req.body.payment;
 
     switch (req.body.payment) {
@@ -49,29 +50,31 @@ controller.placeorders = async (req, res) => {
             break;
 
     }
-    return res.redirect('/user/checkout');
-
-    async function saveOrders(req, res, status) {
-        let userId = 1;
-        let { item, ...others } = req.session.cart.getCart();
-        let order = await models.Order.create({
-            userId,
-            ...orthers,
-            status
-        });
-        let orderDetails = [];
-        items.forEach(item => {
-            orderDetails.push({
-                orderId: order.id,
-                productId: item.product.id,
-                price: item.product.price,
-                quantity: item.quantity,
-                total: item.total
-            });
-        })
-        await models.OrderDetail.bulkCreate(orderDetails);
-        return res.render('error', { message: 'Thank you for order!' });
-    }
+    // return res.redirect('/users/checkout');
 }
+
+async function saveOrders(req, res, status) {
+    let userId = 1;
+    let { items, ...others } = req.session.cart.getCart();
+    let order = await models.Order.create({
+        userId,
+        ...others,
+        status
+    });
+    let orderDetails = [];
+    items.forEach(item => {
+        orderDetails.push({
+            orderId: order.id,
+            productId: item.product.id,
+            price: item.product.price,
+            quantity: item.quantity,
+            total: item.total
+        });
+    });
+    await models.OrderDetail.bulkCreate(orderDetails);
+    req.session.cart.clear();
+    return res.render('error', { message: 'Thank you for order!' });
+}
+
 
 module.exports = controller;

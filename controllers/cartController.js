@@ -26,11 +26,13 @@ controller.update = async (req, res) => {
     if (quantity > 0) {
         let updatedItem = req.session.cart.update(id, quantity);
 
+        //cap nhat thong tin gio hang vao session
         return res.json({
             item: updatedItem,
             quantity: req.session.cart.quantity,
             subtotal: req.session.cart.subtotal,
-            total: req.session.total
+            total: req.session.cart.total
+            
         });
     }
     res.sendStatus(204).end();

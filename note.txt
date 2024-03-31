@@ -1,3 +1,12 @@
 1.
 10. sequelize db:seed:all
 11. web express theo mô hình MVC 
+
+//ket noi data mac cps
+"development": {
+    "username": "datxeCenter",
+    "password": null,
+    "database": "eshopDB",
+    "host": "localhost",
+    "dialect": "postgres"
+  },

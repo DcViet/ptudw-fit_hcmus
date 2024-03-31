@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "datxeCenter",
-    "password": null,
-    "database": "eshopDB",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "eShopDB",
     "host": "localhost",
     "dialect": "postgres"
   },
