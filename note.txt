@@ -10,3 +10,13 @@
     "host": "localhost",
     "dialect": "postgres"
   },
+
+//ket noi data debian namtran
+
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "eshopDB1",
+    "host": "localhost",
+    "dialect": "postgres"
+  },

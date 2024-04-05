@@ -11,6 +11,7 @@ controller.add = async (req, res) => {
     if (product && quantity > 0) {
         req.session.cart.add(product, quantity);
     }
+
     return res.json({ quantity: req.session.cart.quantity });
 }
 
