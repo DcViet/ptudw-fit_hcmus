@@ -23,7 +23,7 @@
                         <div class="col-md-12">
                             <div class="payment-method">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="address-{{id}}" name="addressId" value="{{id}}" {{#if isDefault}} checked{{/if}}>
+                                <input type="radio" class="custom-control-input" id="address-{{id}}" name="addressId" value="{{id}}" {{#if isDefault}}checked{{/if}}>
                                 <label class="custom-control-label" for="address-{{id}}"><strong>{{firstName}} {{lastName}}</strong></label>
                             </div>
                             <div class="payment-content" id="address-{{id}}-show">
@@ -39,7 +39,7 @@
                         {{/each}}
                         <div class="col-md-12">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" id="shipto" name="addressId"/>
+                                <input type="radio" class="custom-control-input" id="shipto" name="addressId" value="0"/>
                                 <label class="custom-control-label" for="shipto">Ship to
                                     different address</label>
                             </div>
@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>First Name</label>
-                            <input class="form-control" type="text" placeholder="First Name" name="firstName" required />
+                            <input class="form-control" type="text" placeholder="First Name" name="firstName"/>
                         </div>
                         <div class="col-md-6">
                             <label>Last Name</label>
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-md-6">
                             <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="E-mail" name="email" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+                            <input class="form-control" type="text" placeholder="E-mail" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                         </div>
                         <div class="col-md-6">
                             <label>Mobile No</label>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="col-md-12">
                             <label>Address</label>
-                            <input class="form-control" type="text" placeholder="Address" name="address" required/>
+                            <input class="form-control" type="text" placeholder="Address" name="address"/>
                         </div>
                         <div class="col-md-6">
                             <label>Country</label>

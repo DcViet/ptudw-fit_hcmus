@@ -10,8 +10,9 @@ controller.checkout = async (req, res) => {
         res.locals.addresses = await models.Address.findAll({ where: { userId } });
         res.locals.cart = req.session.cart.getCart();
         res.render('checkout');
+    } else {
+        res.redirect('/products');
     }
-    res.redirect('/products');
 }
 
 controller.placeorders = async (req, res) => {
