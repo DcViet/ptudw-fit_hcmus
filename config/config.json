@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "datxeCenter",
-    "password": null,
-    "database": "eshopDB",
-    "host": "localhost",
+    "username": "ptudwprojectdb",
+    "password": "gWjcsAsRfaHplQkcvFVGK1sGJc9W5ipc",
+    "database": "ptudwprojectdb_p2ul",
+    "host": "dpg-co7dopi1hbls73c5imj0-a",
     "dialect": "postgres"
   },
   "test": {
