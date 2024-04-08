@@ -3,21 +3,34 @@
     "username": "ptudwprojectdb",
     "password": "gWjcsAsRfaHplQkcvFVGK1sGJc9W5ipc",
     "database": "ptudwprojectdb_p2ul",
-    "host": "dpg-co7dopi1hbls73c5imj0-a",
-    "dialect": "postgres"
+    "host": "dpg-co7dopi1hbls73c5imj0-a.singapore-postgres.render.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorize": false
+      }
+    }
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "postgres",
+    "password": "postgres",
+    "database": "eshopDB1",
+    "host": "localhost",
+    "dialect": "postgres"
   },
+  
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "ptudwprojectdb",
+    "password": "gWjcsAsRfaHplQkcvFVGK1sGJc9W5ipc",
+    "database": "ptudwprojectdb_p2ul",
+    "host": "dpg-co7dopi1hbls73c5imj0-a.singapore-postgres.render.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorize": false
+      }
+    }
   }
 }
