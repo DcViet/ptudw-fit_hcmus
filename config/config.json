@@ -1,6 +1,10 @@
 {
   "development": {
-  "use_env_variable": "POSTGRESQL_URL"
+    "username": "datxeCenter",
+    "password": null,
+    "database": "eshopDB",
+    "host": "localhost",
+    "dialect": "postgres"
   },
 
   "test": {

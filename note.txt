@@ -20,3 +20,8 @@
     "host": "localhost",
     "dialect": "postgres"
   },
+
+  // ket noi su dung env URL
+  "development": {
+  "use_env_variable": "POSTGRESQL_URL"
+  },
