@@ -2,11 +2,24 @@
 
 const express = require('express');
 const router = express.Router();
-const controllers = require('../controllers/authController'); 
+const controller = require('../controllers/authController');
 // const { authenticate } = require('passport');
 // const { route } = require('./indexRouter');
 
-router.get('/login', controllers.show);
-router.post('/login', controllers.login);
+const { body, getErrorMessage } = require('../controllers/validator');
+
+router.get('/login', controller.show);
+router.post('/login',
+    body('email').trim().notEmpty().withMessage('Email is required!').isEmail().withMessage('Invalid email address!'),
+    body('password').trim().notEmpty().withMessage('Password is required!'),
+    (req, res, next) => {
+        let message = getErrorMessage(req);
+        if (message) {
+            return res.render('login', { loginMessage: message });
+        }
+        next();
+    },
+
+    controller.login);
 
 module.exports = router;
