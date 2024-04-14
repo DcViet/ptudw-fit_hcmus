@@ -6,7 +6,7 @@ const controller = require('../controllers/usersController');
 const { body, validationResult } = require('express-validator');
 
 router.get('/checkout', controller.checkout);
-router.post('/placeorders',
+router.post('/placeOrders',
     body('firstName').notEmpty().withMessage('First name is requered!'),
     body('lastName').notEmpty().withMessage('Last name is requered!'),
     body('email').notEmpty().withMessage('Email name is requered!').isEmail().withMessage('Invalid email address!'),
