@@ -30,7 +30,7 @@ passport.use('local-login', new LocalStrategy({
     passReqToCallback: true //cho phep truyen req vao callback de kiem tra user da dang nhap chua
 }, async (req, email, password, done) => {
     if (email) {
-        email = email.toLowerCase; // chuyen dia chi email sang ky tu thuong
+        email = email.toLowerCase(); // chuyen dia chi email sang ky tu thuong
     }
     try {
         if (!req.user) { //neu user chua dang nhap 

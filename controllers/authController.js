@@ -5,6 +5,7 @@ const passport = require('./passport');
 
 controller.show = (req, res) => {
 
+    console.log("Giá trị của loginMessage:", req.flash('loginMessage'));
     res.render('login', { loginMessage: req.flash('loginMessage') });
 }
 
