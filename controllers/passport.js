@@ -4,6 +4,7 @@ const passport = require("passport");
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 const models = require('../models');
+const { where } = require("sequelize");
 
 //ham nay duoc goi khi xac thuc thanh cong va luu thong tin user vao session
 passport.serializeUser((user, done) => {
@@ -51,5 +52,39 @@ passport.use('local-login', new LocalStrategy({
         done(error);
     }
 }));
+
+// ham dang ky tai khoan
+passport.use('local-register', new LocalStrategy ({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+},
+async (req, email, password, done) => {
+    if(email) {
+        email = email.toLowerCase();
+    }
+    if (req.user) { // neu nguoi dung da dang nhao, bo qua
+
+        return done(null, req.user);
+    }
+    try {
+        let user = await models.User.findOne({where: { email }});
+        if (user) {//neu email da ton tai
+        return done( null, false, req.flash('registerMessage', 'Email is already taken!'));
+    }
+    user = await models.User.create({
+        email: email,
+        password: bcrypt.hashSync(password, bcrypt.genSaltSync(8)),
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        mobile: req.body.mobile
+    });
+
+    // thong bao dang ki tai khoan thanh cong
+    done(null, false, req.flash('registerMessage', 'You have registered successfully. Please login!'));
+    } catch (error) {
+        done(error);
+    }
+}))
 
 module.exports = passport;
