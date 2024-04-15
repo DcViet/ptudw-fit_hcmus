@@ -1,3 +1,4 @@
+// TRUONG TRUNG DUC - MSSV: 21880291 CN2
 1.
 10. sequelize db:seed:all
 11. web express theo mô hình MVC 
