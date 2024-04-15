@@ -1,15 +1,14 @@
 {
- "development": {
-  "use_env_variable": "POSTGRESQL_URL",
-  "dialect": "postgres",
+  "development": {
+    "use_env_variable": "POSTGRESQL_URL",
+    "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
         "require": true,
-        "rejectUnauthorize": false
+        "rejectUnauthorized": false
       }
     }
   },
-
   "test": {
     "username": "datxeCenter",
     "password": null,
@@ -17,14 +16,13 @@
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
-  
   "production": {
     "use_env_variable": "POSTGRESQL_URL",
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
         "require": true,
-        "rejectUnauthorize": false
+        "rejectUnauthorized": false
       }
     }
   }
