@@ -1,20 +1,14 @@
 {
-<<<<<<< HEAD
  "development": {
-  "use_env_variable": "POSTGRESQL_URL"
-  },
-=======
-  "development": {
-    "use_env_variable": "POSTGRESQL_URL",
-    "dialect": "postgres",
+  "use_env_variable": "POSTGRESQL_URL",
+  "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
         "require": true,
         "rejectUnauthorize": false
       }
     }
-    },
->>>>>>> dc72bb2 (fix: connect host postgres)
+  },
 
   "test": {
     "username": "datxeCenter",
