@@ -11,6 +11,19 @@
     "dialect": "postgres"
   },
 
+  // POSTGRESQL_URL=postgres://datxeCenter:@127.0.0.1:5432/eshopDB
+
+"production": {
+    "use_env_variable": "POSTGRESQL_URL",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorize": false
+      }
+    }
+  }
+  
 //ket noi data debian namtran
 
   "development": {
@@ -25,3 +38,4 @@
   "development": {
   "use_env_variable": "POSTGRESQL_URL"
   },
+
